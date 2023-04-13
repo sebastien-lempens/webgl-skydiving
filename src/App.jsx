@@ -1,6 +1,6 @@
 import React, { Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { CameraShake, Loader, Environment, OrbitControls } from "@react-three/drei";
+import { CameraShake, Loader, Environment, OrbitControls, useDetectGPU } from "@react-three/drei";
 import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
 import { WindEffect } from "./components/WindEffect";
 import { Model } from "./components/Model";
@@ -27,9 +27,11 @@ const Scene = () => {
 };
 
 const App = () => {
+  const GPUTier = useDetectGPU();
+  let dpr = GPUTier.isMobile ? 0.5 : 1;
   return (
     <>
-      <Canvas camera={{ fov: 70, position: [0, 0, 3] }}>
+      <Canvas dpr={dpr} camera={{ fov: 70, position: [0, 0, 3] }}>
         <Suspense fallback={null}>
           <Scene />
         </Suspense>
