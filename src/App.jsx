@@ -28,7 +28,7 @@ const Scene = () => {
 
 const App = () => {
   const GPUTier = useDetectGPU();
-  let dpr = GPUTier.isMobile ? 0.5 : 1;
+  let dpr = GPUTier.isMobile ? 0.7 : 1;
   return (
     <>
       <Canvas dpr={dpr} camera={{ fov: 70, position: [0, 0, 3] }}>
