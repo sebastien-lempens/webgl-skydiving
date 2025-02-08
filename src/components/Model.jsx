@@ -16,9 +16,8 @@ export const Model = () => {
         baseColor.flipY = roughness.flipY = metallic.flipY = normal.flipY = clothes.flipY = false;
       }
     );
-  const test = useGLTF("/skydiver.glb");
-  const { nodes, animations, scene } = useGLTF("/skydiver.glb");
-  const { ref, actions, names } = useAnimations(animations, scene);
+  const { nodes, animations } = useGLTF("/skydiver.glb");
+  const { ref, actions } = useAnimations(animations);
   const { mixamorigHips, skydiver_2: skydiver } = nodes;
   const onBeforeCompile = shader => {
     Object.assign(shader.uniforms, { ...skydiver.material.uniforms });
